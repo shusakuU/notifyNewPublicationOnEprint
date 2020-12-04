@@ -11,10 +11,11 @@ function scrapingEprint() {
   var scriptProperties = PropertiesService.getScriptProperties();
   var mentionId = scriptProperties.getProperty("slackMentionId");
   sendToSlack("<@"+ mentionId +">\n今日のeprint "+targetUrl)
+  var text = ""
   for(var i=0; i<titles.length; i++){
-    var text = "*"+titles[i]+"*\n_"+authors[i]+"_"
-    sendToSlack(text)
+    text = text + "*"+titles[i]+"*\n_"+authors[i]+"_\n\n"
   }
+  sendToSlack(text)
 }
 
 
